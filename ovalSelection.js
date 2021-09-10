@@ -315,7 +315,7 @@ function modalAnswer(ovalId, sameColSelection, sameRowSelection, answer, otherCa
 function showModal(modalId, returnFocusEleId) {	
     const modal = document.getElementById(modalId);
     modal.style = 'display:block;'
-    document.getElementsByTagName('main')[0].style = 'aria-hidden:true;'
+    document.getElementById('main').style = 'aria-hidden:true;'
     document.getElementById("overlay").style = 'display:block;'
 
     // add all the elements inside modal which you want to make focusable
@@ -349,6 +349,7 @@ function showModal(modalId, returnFocusEleId) {
 }
 
 function hideModal(modalId, returnFocusEleId) {
+    document.getElementById('main').style = 'aria-hidden:false;'
     document.getElementById("overlay").style = 'display:none;'
     if (modalId == 'rcModal') {
         recreateNode(document.getElementById("yesButton"));
