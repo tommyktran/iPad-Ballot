@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">	
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+    <title>Any Town General</title>
+
+    <link rel='stylesheet' href='../ballot.css' />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>  
+	<script src='voterData.js'></script>  
+	<script src = 'ballotData.js'></script>	  
+    <script src='../ballot.js'></script>    
+    <script src='../ballotpdf.js'></script>
+    <script src='../buildSelectionPage.js'></script>
+    <script src='../ovalSelection.js'></script>
+    <script src='../buildReviewPage.js'></script>
+    <script src='../keyboard.js'></script>    
+    <script src='../pdfua.js'></script>
+	<script src='../print_ballot.js'></script>	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/forge/0.8.2/forge.all.min.js"></script> 
+<script src="https://cdn.rawgit.com/eligrey/FileSaver.js/5ed507ef8aa53d8ecfea96d96bc7214cd2476fd2/FileSaver.min.js"></script>
+<script>TextEncoder = TextDecoder = null</script>
+<script src="https://rawgit.com/inexorabletash/text-encoding/master/lib/encoding-indexes.js"></script>
+<script src="https://rawgit.com/inexorabletash/text-encoding/master/lib/encoding.js"></script>
+
+</head>
+
+<body>
+    <main>
+        <!-- Ballot Section  -->        
+		<div class="step">	
+            <h1 id="step1" class="stepBanner" tabindex="0">Step 1 of 3: Make Ballot Selections</h1>                            
+            <div id="selection">
+                <div id="ballotTitle">
+                    <h2 aria-label="State of Maine Office Ballot General Election, November 3, 2020 for Any Town">State of Maine Office Ballot<br>General Election, November 3, 2020<br>for<br>Any Town</h2>
+                </div>
+                <!-- Contest Selections -->
+                <div id="contests"></div>
+                <!-- Overlay for Modal  -->
+                <div id="overlay"></div>
+                <!-- Modal for Rank Choice Confirmation  -->
+                <div id="rcModal" class="modal" role="alertdialog" aria-labelledby="rcModalTitle" aria-describedby="rcModalText">
+                    <h2 id="rcModalTitle">Confirm Selection</h2>
+                    <p id="rcModalText">Modal text here</p>
+                    <div class="modalButtonDiv">
+                        <button class="button" onclick="return false;" id="yesButton">Yes</a>
+                        <button class="button" onclick="return false;" id="noButton">No</a>
+                    </div>
+                </div>
+				<!-- Modal for Reach maximum number of choices  -->
+				<div id="maxChoicesModal" class="modal" role="alertdialog" aria-labelledby="maxChoicesModalTitle" aria-describedby="maxChoicesModalText">
+					<h2 id="maxChoicesModalTitle">Maximum Number of Choices</h2>
+					<hr padding="20px"><br>
+					<p id="maxChoicesModalText">You have reached the maximum number of choices for this contest.</p>
+					<div class="modalButtonDiv">
+						<button id="maxChoicesOkButton" class="button" onclick="return false;">OK</a>
+					</div>
+				</div>  
+				<!-- Modal for Enter Write-in name  -->
+                <div id="writeInModal" class="modal" role="alertdialog" aria-labelledby="writeInModalTitle" aria-describedby="writeInModalText">
+                    <h2 id="writeInModalTitle">Enter Write-in Name</h2>
+					<hr padding="20px"><br>
+                    <p id="writeInModalText">Please type the name of the write-in candidate:</p>
+					<input id="writeInName" maxlength="25" />
+                    <div class="modalButtonDiv">
+                        <button class="button" onclick="return false;" id="writeInOkButton">OK</a>
+                        <button class="button" onclick="return false;" id="writeInCancelButton">Cancel</a>
+                    </div>
+                </div>				
+            </div>
+            <h2 id="ballotEnd" tabindex="0">----------- End of Ballot -----------</h2>                                                     
+        </div>
+        <!-- Review Section  -->
+        <div class="step">
+            <h1 id="step2" class="stepBanner" tabindex="0">Step 2 of 3: Review Ballot Selections</h1>
+            <div id="reviewPage">
+                <p id="reviewPageInstructions">Listed below is a summary of your selections. Each contest is displayed in a button. To change your selections for a contest, click the corresponding button, and the screen will scroll back to that part of the ballot where you can change your choices. When you are done reviewing all selections, please continue to Step 3 where you will read and sign the Affirmation Page.</p>                
+                <div id="reviewBody"></div>
+            </div>
+            <h2 id="reviewEnd" tabindex="0">----------- End of Review -----------</h2>                
+        </div>
+        <!-- Affirmation Section  -->
+        <div class="step">
+            <h1 id="step3" class="stepBanner" tabindex="0">Step 3 of 3: Sign Maine Absentee Ballot Affirmation</h1>                            
+            <div id="affidavitPage">
+                <p>Warning: Knowingly providing falsified information on this affidavit is illegal under State and federal law and could result in criminal sanctions.</p>            
+                <div class="affidavitTopBox">
+					<div id="uocava"></div>
+                </div>            
+                <div class="affidavitTopBox">
+                    <p>My name and Maine voting residence (city or town):</p>
+                    <p>Voter’s name: Mary U. Smith</p>
+                    <p>City or Town:&nbsp;&nbsp;Augusta</p>
+                </div>            
+                <p>Affirmation – I swear or affirm, under penalty of perjury, that:</p>
+                <ol>
+                    <li><p>I am a member of the Uniformed Services or merchant marine on active duty or an eligible spouse or dependent of such a member, or a U.S. citizen temporarily residing outside the U.S., or other U.S. citizen residing outside the U.S., absent from place of registration, and</p></li>
+                    <li><p>I am a U.S. citizen, at least 18 years of age (or will be by the day of the election), eligible to vote in the requested jurisdiction; and</p></li>
+                    <li><p>I am not registering, requesting a ballot, or voting in any other jurisdiction in the U.S.; and</p></li>
+                    <li><p>I am completing and returning only one authorized absentee ballot; and</p></li>
+                    <li><p>I have not made additional copies of the absentee ballot or provided them to other voters; and</p></li>
+                    <li><p>My signature and date below indicate when I completed this document; and</p></li>
+                    <li><p>The information on this form is true and complete to the best of my knowledge. I understand that a material misstatement of fact in completion of this document may constitute grounds for conviction of perjury; and</p></li>
+                    <li><p>I understand that, with any absentee ballot, my name and signature will be permanently separated from my voted ballot to maintain its secrecy at the outset of the tabulation process and thereafter.</p></li>
+                </ol>            
+                <div class="affidavitBottomBox">
+                    <p> Please enter your password in the 'Signed by' field below, click the 'Done' button, save the document to your computer, then email it as an attachment to <strong>UOCAVA.CEC@maine.gov</strong></p>                                        
+                    <p>Note: If password is successful the page's content will change to a Thank You screen.</p>
+                </div>            
+                <div id="inputsWrap_AffidavitPage">
+                    <label>Signed by:
+                        <input type="password" id="signedby">
+                    </label>                    
+                </div>                
+                <div id="buttonWrap_AffidavitPage">
+                    <button id="doneButton_AffidavitPage">Done</button>					
+                </div>  
+				<!-- Incorrect Password Modal -->
+            </div>
+        </div> 		
+    </main>	
+    <div id="pwModal" class="modal" role="alertdialog" aria-labelledby="pwModalTitle" aria-describedby="pwModalText">
+        <h2 id="pwModalTitle">Invalid Password</h2>
+        <hr padding="20px"><br>
+        <p id="pwModalText">Please enter the correct password.</p>
+        <div class="modalButtonDiv">
+            <button id="pwOkButton" class="button" onclick="hideModal('pwModal', 'signedby')">OK</a>
+        </div>						
+    </div>				
+</body>

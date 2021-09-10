@@ -1,0 +1,571 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    color: black;
+}
+body {
+    padding: 10px 0;
+    background-color: #888;
+}
+
+.selectionContest {
+    /* border-bottom: 1px solid black; */
+    margin: 10px;
+}
+
+.header-row {
+    /* background-color: #adb5bd; */
+    background-color: whitesmoke;
+    text-align: center;
+}
+
+.row.header { 
+    /* font-weight: bold; */
+    /* color: white; */
+    background-color: whitesmoke;
+}
+
+section {
+    text-align: center;
+}
+hr {
+    margin: 20px 0 0;
+}
+
+h1, h2, h3, h4 {
+    text-align: center;
+}
+
+h1:focus, h2:focus, h3:focus, #inputsWrap_AffidavitPage input:focus {
+    background-color: whitesmoke;
+}
+
+/* CUSTOM CHECKBOX */
+/* The container */
+.container {
+    position: relative;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0px;
+    width: 0px;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    display: inline-block;
+    height: 18px;
+    width: 28px;
+    border: 2px solid black;
+    border-radius: 50%;
+    background-color: white;
+}
+
+/* On mouse-over, add a light grey background color */
+.container:hover input~.checkmark {
+    background-color: #ddd;
+}
+
+/* When the checkbox is checked, add a black background */
+.container input:checked~.checkmark {
+    background-color: black;
+}
+
+
+.container input:focus~.checkmark {
+    box-shadow: 0 0 2px 1px dodgerblue;
+}
+
+/* styling for text-area housing the question to be voted on*/
+.question {
+    border: 2px solid black;
+    background-color: whitesmoke;
+    padding: 15px;	
+    font-size: 21px;
+    width: 100%;
+    letter-spacing: 0.25px;
+    border-bottom: none;
+}
+
+/* wrapper styling for yes-no in question-type poll*/
+#yesNoWrap {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+/* modifies checkmark for regular and question polls*/
+.checkmark.ballotCheckbox {
+    margin-right: 10px;
+    display: inline-block;
+    border: 2px solid black;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.indivCandidate {
+    display: flex;
+    flex-direction: row;
+}
+.indivCandidate .checkmark, .questionOption .checkmark {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.candidateLabel {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.indivCandidate, .questionOption {
+    padding: 5px;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+}
+.indivCandidate:first-child, .questionOptionsDiv {
+    border-top: 2px solid black;
+}
+
+.candidateName {
+    text-align: left;
+    font-size: 20px;
+    /* display: inline; */
+}
+
+.candidateSubtitle {
+    margin-left: 12px;
+    text-align: left;
+    font-weight: 100;
+    font-size: 20px;
+}
+
+#writeInName {
+	text-transform: uppercase;	
+	width: 400px;
+	padding: 10px;
+	margin: 15px 20px;
+	font-size: 22px;	
+}
+
+#signedby {		
+	width: 200px;
+	padding: 10px;
+	margin: 15px auto;
+	font-size: 22px;	
+}
+
+.container .writebox {
+    position: relative;
+    opacity: 100;
+    cursor: pointer;
+    height: initial;
+    width: initial;
+}
+.writebox {
+    margin-left: 5px;
+    border: none;
+    border-bottom: 1px solid gray;
+    font-size: 20px;
+    color: blue;
+}
+p {
+    font-size: 22px;
+}
+
+.contestName {
+    font-size: 26px;
+}
+
+.contestSubtitle {
+    font-size: 24px;
+}
+
+.votingInstructions {
+    text-align: center;
+    font-size: 22px;
+    font-weight: normal;
+}
+
+
+ol {
+    padding-left: 40px;
+}
+.reviewPage div {
+    border: 3px solid black;
+}
+
+
+#affidavitPage, #howToVote {
+    margin: 0 auto 50px;
+    width: 60%;//800px;
+	font-size: 22px;
+}
+
+#affidavitPage li, #howToVote li {
+    padding: 10px;
+}
+
+#howToVote p {
+    padding: 12px 0;
+}
+
+.affidavitTopBox, .affidavitBottomBox {
+    border: 3px solid black;   
+    padding: 20px 20px;
+    margin: 20px 0px;
+}
+
+td > .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.reviewContest {
+    width: 60%; //800px;
+    text-align: center;
+    background-color:whitesmoke;
+    padding: 20px;
+    margin: 0 auto 15px;
+    border: 1px solid black;
+    border-radius: 16px;
+	font-size: 0px;
+}
+
+.reviewContest:hover {
+    cursor: pointer;
+    background-color: #CCC;
+}
+
+.reviewContest:focus {
+    //background-color: #CCC;
+}
+
+
+/*.reviewContestButton {
+    width: 60%; //800px;
+    margin: 3px 0;
+}*/
+
+#reviewPageInstructions {
+    width: 60%; //800px;
+    margin: 20px auto;    
+    padding: 20px;
+}
+
+#reviewBody {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reviewContestHeader {
+    margin: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid black;
+    color: rgb(43, 43, 192);
+    font-weight: bold;
+}
+
+.reviewCandidates {
+    font-size: 20px;
+    padding-top: 12px;
+}
+
+.reviewPageNoSelection {
+    /* font-style: italic; */
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#reviewFooter {
+    margin-top: 5px;
+}
+
+/* End styles for ReviewPage */
+
+#selection {
+    display: block;
+}
+
+#ballotTitle {
+    margin: 30px;
+    font-size: larger;   
+}
+
+a {
+    text-decoration: none;
+}
+
+
+a {
+    color: black;
+}
+
+/* Unvisited link  */
+a:visited {
+    color: black;
+}
+
+/* Visited link    */
+a:focus {
+    color: blue;
+}
+
+a:active {
+    color: black;
+}
+
+/* Selected link   */
+
+button:focus {
+    color: blue;
+    border: solid 3px blue;
+}
+
+.reviewCandidateName {
+    margin-left: 50%;
+}
+/* end styles for ReviewPage */
+
+.modal {
+    background-color: white;
+    border-radius: 10px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    padding: 20px 20px 10px;
+    display: none;
+    box-shadow: 0px 0px 8px rgb(1,1,1,.4);
+    z-index:1002;
+    color: #222;
+}
+.modal button {
+    text-decoration: none;    
+	background-color: lightgray;
+    border: 1px solid black;
+	width: 100px;
+    cursor: pointer;
+    font-size: 22px;
+    padding: 5px 12px;
+    border-radius: 5px;
+}
+.modal #noButton, .modal #yesButton, #pwOkButton  {
+    color: rgba(1,1,1, .8);
+    background-color: rgba(189,195,199 ,1);
+}
+#noButton:hover, #yesButton:hover, #pwOkButton:hover {
+    background-color: rgba(189,195,199 ,.4);
+}
+.modalButtonDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    bottom: 10px;
+    width: 50%;
+    margin: 30px auto 5px;
+    margin-top: 20px;
+}
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: darkgray;
+    opacity: 0.9;
+    z-index: 1001;
+}
+
+button {
+    background-color:initial;
+    border: none;
+    font-size: 22px;
+    border: 2px solid gray;
+    border-radius: 13px;
+    padding: 5px 10px;
+    background-color: lightgray;
+    margin: 0 auto;
+    display: block;
+}
+
+button:hover {
+    background-color: darkgray;
+}
+
+.writeinName {
+    border-bottom: 1px solid gray;
+    margin-left: 10px;
+    display: inline-block;
+    text-align: left;
+    color: blue;
+    font-size: initial;
+}
+
+#buttonWrap_ReviewPage, #buttonWrap_AffidavitPage {
+	margin-top: 30px;
+	margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+#inputsWrap_AffidavitPage {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;   
+    font-size: 22px;
+}
+
+#thankyouForVoting { 
+    padding-top: 20%;
+    font-size: 3em;
+	border: none;
+}
+
+.stepBanner {
+    width: auto;  
+    border-bottom: 2px solid black;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #e6e9ed;
+}
+
+#ballotEnd, #reviewEnd, #instructionsEnd {
+    margin: 20px;
+}
+
+.step {
+    width: 98%; //1200px;
+    border: 2px solid black;
+    margin: 20px auto;
+    background-color: white;
+}
+#doneButton_AffidavitPage {
+    margin-bottom: 10px;
+	padding: 12px 20px;
+}
+
+.row {
+    display: table-row;
+    /* background: #f6f6f6; */
+}
+
+.table,.regCandidates, .questionDiv {
+    margin: 0 auto 30px;	
+    width: 60%; //800px;
+    display: table;
+    border: 1px solid black;
+	border-collapse:collapse;
+}
+
+.cell {
+    display: table-cell;
+    border: 1px solid black;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.rcOval {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0px;
+    width: 0px;
+}
+
+/* Create a custom checkbox */
+.rcCheckmark {
+    display: inline-block;
+    height: 18px;
+    width: 28px;
+    border: 2px solid black;
+    border-radius: 50%;
+    background-color: white;
+    margin-top: 6px;
+}
+
+
+/* On mouse-over, add a light grey background color */
+.rcCheckmark:hover {
+    background-color: #ddd;
+}
+
+/* When the checkbox is checked, add a black background */
+.rcOval:checked~.rcCheckmark {
+    background-color: black;
+}
+
+.rcOval:focus~.rcCheckmark {
+    box-shadow: 0 0 2px 1px dodgerblue;
+}
+
+.candidateName {
+    text-align: left;
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+.candidateSubtitle {
+    display: block;
+    padding-left: 10px;
+    font-weight: normal;
+}
+
+.rcCandidateName {
+    text-align: left;
+    padding-left: 2%;
+    margin: 1% 0 1% 0;
+}
+
+/* screen reader only aria alert div */
+.sr-only {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+  
+@media (max-width: 1024px) {
+    .candidateSubtitle {
+        font-weight: 400;
+    }
+}
+@media (max-width: 830px) {
+	#howToVote, .regCandidates, .questionDiv, .table, #reviewPageInstructions, .reviewContest, .reviewContestButton, .reviewCandidates, #affidavitPage {
+        width: 80%;
+    }
+	   
+    body {
+        margin: 5px;
+    }
+    html {
+        zoom: 56%;
+    }
+    #reviewPage {
+        padding: 0 3px;
+    }
+    .selectionContest {
+        margin: 5px;
+    }
+	.candidateSubtitle {
+        font-weight: 400;
+    }
+}   
