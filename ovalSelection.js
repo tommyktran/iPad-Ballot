@@ -316,6 +316,7 @@ function showModal(modalId, returnFocusEleId) {
     const modal = document.getElementById(modalId);
     modal.style = 'display:block;'
     document.getElementById('main').ariaHidden = 'true'
+    document.getElementById('main').inert = 'true'
     document.getElementById("overlay").style = 'display:block;'
 
     // add all the elements inside modal which you want to make focusable
@@ -350,6 +351,7 @@ function showModal(modalId, returnFocusEleId) {
 
 function hideModal(modalId, returnFocusEleId) {
     document.getElementById('main').ariaHidden = 'false'
+    document.getElementById('main').inert = 'false'
     document.getElementById("overlay").style = 'display:none;'
     if (modalId == 'rcModal') {
         recreateNode(document.getElementById("yesButton"));
