@@ -1,6 +1,6 @@
 const rcRaceHtml = `
   <div class="selectionContest">
-    <h2 id="contest_{CONTEST_INDEX}" class="contestName" tabindex="0" aria-label="{CONTEST_NAME} {CONTEST_SUBTITLE} {VOTING_INSTRUCTIONS}">
+    <h2 id="contest_{CONTEST_INDEX}" class="contestName" tabindex="0">
       {CONTEST_NAME}<br>{CONTEST_SUBTITLE}
     </h2>
     <p class="votingInstructions">{VOTING_INSTRUCTIONS}</p>
@@ -15,7 +15,7 @@ const rcRaceHtml = `
 ` 
 const rRaceHtml = `
   <div class="selectionContest">
-    <h2 id="contest_{CONTEST_INDEX}" class="contestName" tabindex="0" aria-label="{CONTEST_NAME} {CONTEST_SUBTITLE} {VOTING_INSTRUCTIONS}">
+    <h2 id="contest_{CONTEST_INDEX}" class="contestName" tabindex="0">
       {CONTEST_NAME}<br>{CONTEST_SUBTITLE}
     </h2>    
     <p class="votingInstructions">{VOTING_INSTRUCTIONS}</p>
@@ -80,7 +80,7 @@ const candidateRegWriteIn = `
 
 const qRaceHtml = `
   <div class="selectionContest">
-    <h2 id="contest_{CONTEST_INDEX}" class="contestName" tabindex="0" aria-label="{CONTEST_NAME} {CONTEST_SUBTITLE} {VOTING_INSTRUCTIONS}">
+    <h2 id="contest_{CONTEST_INDEX}" class="contestName" tabindex="0">
       {CONTEST_NAME}<br>{CONTEST_SUBTITLE}
     </h2>                
 	<p class="votingInstructions">{VOTING_INSTRUCTIONS}</p>
