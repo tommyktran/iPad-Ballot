@@ -320,11 +320,14 @@ function showModal(modalId, returnFocusEleId) {
     document.getElementById("overlay").style = 'display:block;'
 
     // add all the elements inside modal which you want to make focusable
-    const  focusableElements = ['button'];
+    const  focusableElements = ['button', 'h2', 'p'];
     const firstFocusableElement = modal.querySelectorAll(focusableElements)[0]; // get first element to be focused inside modal  
     const focusableContent = modal.querySelectorAll(focusableElements);
     const lastFocusableElement = focusableContent[focusableContent.length - 1]; // get last element to be focused inside modal
 	
+
+
+
     document.addEventListener('keydown', function modalKeyHandler(e) {
         let isTabPressed = e.key === 'Tab';
         let isEscPressed = e.key === 'Escape';
@@ -346,7 +349,7 @@ function showModal(modalId, returnFocusEleId) {
             document.removeEventListener('keydown', modalKeyHandler);
         } 
     });	
-    // firstFocusableElement.focus();    
+    firstFocusableElement.focus();    
 }
 
 function hideModal(modalId, returnFocusEleId) {
