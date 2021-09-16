@@ -349,9 +349,10 @@ function showModal(modalId, returnFocusEleId) {
             document.removeEventListener('keydown', modalKeyHandler);
         } 
     });	
-    firstFocusableElement.focus(); 
-    firstFocusableElement.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED);
-   
+    // firstFocusableElement.focus(); 
+    // firstFocusableElement.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED);
+   modal.tabIndex = 0;
+   modal.focus();
     console.log(firstFocusableElement);
 }
 
