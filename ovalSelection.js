@@ -351,8 +351,9 @@ function showModal(modalId, returnFocusEleId) {
     });	
     // firstFocusableElement.focus(); 
     // firstFocusableElement.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED);
-    modal.getElementsByTagName('h2')[0] = 0;
-    modal.getElementsByTagName('h2')[0].focus()
+    modal.getElementsByTagName('h2')[0].tabIndex = 0;
+    modal.getElementsByTagName('h2')[0].focus();
+    modal.getElementsByTagName('h2')[0].style="color:red;"
     console.log(firstFocusableElement);
 }
 
