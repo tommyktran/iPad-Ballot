@@ -349,7 +349,9 @@ function showModal(modalId, returnFocusEleId) {
             document.removeEventListener('keydown', modalKeyHandler);
         } 
     });	
-    firstFocusableElement.focus();    
+    firstFocusableElement.focus(); 
+    firstFocusableElement.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED);
+   
     console.log(firstFocusableElement);
 }
 
