@@ -351,8 +351,8 @@ function showModal(modalId, returnFocusEleId) {
     });	
     // firstFocusableElement.focus(); 
     // firstFocusableElement.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED);
-    modal.tabIndex = 0;
-    modal.focus();
+    modal.getElementsByTagName('h2')[0] = 0;
+    modal.getElementsByTagName('h2')[0].focus()
     console.log(firstFocusableElement);
 }
 
