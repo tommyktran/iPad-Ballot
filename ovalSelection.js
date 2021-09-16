@@ -350,7 +350,7 @@ function showModal(modalId, returnFocusEleId) {
         } 
     });	
     firstFocusableElement.focus();    
-    print(firstFocusableElement);
+    console.log(firstFocusableElement);
 }
 
 function hideModal(modalId, returnFocusEleId) {
