@@ -346,7 +346,7 @@ function showModal(modalId, returnFocusEleId) {
             document.removeEventListener('keydown', modalKeyHandler);
         } 
     });	
-    firstFocusableElement.focus();    
+    // firstFocusableElement.focus();    
 }
 
 function hideModal(modalId, returnFocusEleId) {
