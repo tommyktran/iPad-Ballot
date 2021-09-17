@@ -488,6 +488,20 @@ button:hover {
     width: 0px;
 }
 
+.sectionEnd {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+/* adds a line to sectionEnd */
+.sectionEnd::before, .sectionEnd::after {
+    content: "";
+    flex: 1 1;
+    border-bottom: 1px solid black;
+    margin: auto 10px;
+}
+
 /* Create a custom checkbox */
 .rcCheckmark {
     display: inline-block;
@@ -498,10 +512,6 @@ button:hover {
     background-color: white;
     margin-top: 6px;
 }
-
-/* th ~.cell {    
-    max-width: 50px;
-} */
 
 /* On mouse-over, add a light grey background color */
 .rcCheckmark:hover {
