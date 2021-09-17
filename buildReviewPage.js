@@ -3,7 +3,9 @@ const rankedVote = `<p>{RANK} choice: {CANDIDATE_NAME}</p>`
 const noSelection = `<div class="reviewPageNoSelection">No Selection</div>`
 const reviewContestHtml = `
     <div id="review_contest_{REVIEW_ID}" class="reviewContest" role="button" tabIndex="0">
-        <p id="review_header_{REVIEW_ID}" class="reviewContestHeader">{CONTESTNAME}  (Vote for {VOTEFOR})</p>
+        <p id="review_header_{REVIEW_ID}" class="reviewContestHeader">{CONTESTNAME} <br aria-hidden="true"/>
+        <span class="reviewPageContestVoteFor">Vote for {VOTEFOR}</span>
+        </p>
         <div id="review_candidates_{REVIEW_ID}" class="reviewCandidates">
             {CANDIDATES}
         </div>
